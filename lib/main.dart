@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/pages/InitialPage.dart';
+import 'package:tracking_app/screens/search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const InitialPage(),
+      home: SearchScreen(),
     );
   }
 }

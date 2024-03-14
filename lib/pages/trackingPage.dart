@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:tracking_app/constants/constants.dart';
 
+// ignore: must_be_immutable
 class TrackingPage extends StatefulWidget {
-  final LatLng position1;
-  final LatLng destinationPosition;
+  LatLng position1;
+  LatLng destinationPosition;
   TrackingPage(
       {required this.position1, required this.destinationPosition, super.key});
 

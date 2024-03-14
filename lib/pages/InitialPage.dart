@@ -11,26 +11,26 @@ class InitialPage extends StatefulWidget {
 }
 
 class _InitialPageState extends State<InitialPage> {
-  LocationData? correntLocation;
   static const LatLng destinationPosition =
       LatLng(-46.447975778904144, -67.51982599155225);
-  LatLng? position;
+  static const LatLng destinationPosition2 =
+      LatLng(-46.445754503153175, -67.55101571365178);
+  late final LatLng position;
 
-  void getCorrentLocation() async {
-    Location location = Location();
+  Location location = Location();
+  init() async {
+    LocationData currentLocation = await getCorrentLocation();
+  }
 
-    correntLocation = await location.getLocation();
-    location.getLocation().then(
-      (value) {
-        position = LatLng(value.latitude!, value.longitude!);
-      },
-    );
+  Future<LocationData> getCorrentLocation() async {
+    var locationData = await location.getLocation();
+    return locationData;
   }
 
   @override
   void initState() {
     // TODO: implement initState
-    getCorrentLocation();
+    init();
     super.initState();
   }
 
@@ -43,22 +43,24 @@ class _InitialPageState extends State<InitialPage> {
           children: [
             ElevatedButton(
                 onPressed: () {
+                  print(position);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => TrackingPage(
-                              position1: position!,
+                              position1: position,
                               destinationPosition: destinationPosition)));
                 },
                 child: Text("Gimnasio 1")),
             ElevatedButton(
                 onPressed: () {
+                  print(position);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => TrackingPage(
-                              position1: position!,
-                              destinationPosition: destinationPosition)));
+                              position1: position,
+                              destinationPosition: destinationPosition2)));
                 },
                 child: Text("Gimnasio 2")),
           ],
